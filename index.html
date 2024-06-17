@@ -12,7 +12,6 @@
 <body>
 
 <div class="navbar">
-<!--    <div class="footer-link" onclick="window.open('https://app.meteora.ag/dlmm')">Visit Meteora DLMM</div>-->
     <div class="title-text">Meteora DLMM Calculator</div>
 </div>
 
@@ -24,9 +23,6 @@
             <div id="dropdown-content" class="dropdown-content"></div>
         </label>
         <div>
-            <label class="small-label">Your TVL
-                <input onkeyup="app.estimate()" type="number" value="100" id="user-tvl-input" class="input small-input">
-            </label>
             <label class="small-label">Min. Vol.
                 <input onkeyup="app.estimate()" type="number" value="1000" id="min-volume-input" class="input small-input">
             </label>
@@ -34,16 +30,19 @@
                 <input onkeyup="app.estimate()" type="number" value="1000" id="min-liquidity-input"
                        class="input small-input">
             </label>
-            <label class="small-label">
-                <input onclick="app.estimate()" type="checkbox" id="tvl-is-added" class="checkbox"
-                       title="Check this box if your TVL is not in the pool yet"> TVL is not added yet
-            </label>
         </div>
-        <div id="pool-health-container">Pool Health is currently disabled... will be back soon...</div>
-        <div id="pool-data-container" class="info-box show">Search for a pool to populate this area</div>
-        <button id="toggle-additional-info" class="button">Show Additional Information</button>
+<!--        <div id="pool-health-container">Pool Health is currently disabled... will be back soon...</div>-->
+        <div id="pool-data-container" class="info-box show">Search for a pool or click a pool to the right to populate this area</div>
+<!--        <button id="toggle-additional-info" class="button">Show Additional Information</button>-->
         <div id="additional-info-container" class="info-box"></div>
         <div id="output-container">
+            <label class="small-label">Your TVL
+                <input onkeyup="app.estimate()" type="number" value="100" id="user-tvl-input" class="input small-input">
+            </label>
+            <label class="small-label constrained-label">
+                <input onclick="app.estimate()" type="checkbox" id="tvl-is-added" class="checkbox"
+                       title="Check this box if your TVL is not in the pool yet">Check this box if your TVL is not in the pool yet
+            </label>
             <div class="estimated-container">Your % of the Pool: <span id="percent-of-pool"></span></div>
             <div class="estimated-container">Estimated Daily Return: <span id="daily-return"></span></div>
             <div class="estimated-container">Estimated Time to ROI : <span id="time-to-roi"></span></div>
