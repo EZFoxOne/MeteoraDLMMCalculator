@@ -47,10 +47,10 @@ class App {
             }
         });
 
-        this.toggleAdditionalInfoBtn.addEventListener('click', () => {
-            this.additionalInfoContainer.classList.toggle('show');
-            this.toggleAdditionalInfoBtn.textContent = this.additionalInfoContainer.classList.contains('show') ? 'Hide Additional Information' : 'Show Additional Information';
-        });
+        // this.toggleAdditionalInfoBtn.addEventListener('click', () => {
+        //     this.additionalInfoContainer.classList.toggle('show');
+        //     this.toggleAdditionalInfoBtn.textContent = this.additionalInfoContainer.classList.contains('show') ? 'Hide Additional Information' : 'Show Additional Information';
+        // });
     }
 
     async getAllPools() {
@@ -183,13 +183,16 @@ class App {
 
     displayPoolData() {
         this.poolDataContainer.innerHTML = `
-        <h3><span class="pool-link" onclick="window.open('https://app.meteora.ag/dlmm/${this.currentPool.address}')">${this.currentPool.name}</span></h3>
+        <div class="pool-data-title">${this.currentPool.name}</div>
+        <div id="pool-links-container" class="pool-links-container">
+            <span class="pool-link-icon meteora-icon" onclick="window.open('https://app.meteora.ag/dlmm/${this.currentPool.address}')">Meteora</span>
+            <span class="pool-link-icon birdeye-icon" onclick="window.open('https://birdeye.so/token/${this.currentPool.mint_x}/${this.currentPool.address}')">Birdeye</span>
+            <span class="pool-link-icon jupiter-icon" onclick="window.open('https://jup.ag/swap/${this.currentPool.mint_x}-${this.currentPool.mint_y}')">Jupiter</span>
+            <span class="pool-link-icon solscan-icon" onclick="window.open('https://solscan.io/account/${this.currentPool.address}')">SolScan</span>
+        </div>
+        <div class="pool-data-wrapper">
         <table>
             <tbody>
-                <tr>
-                    <td class="pool-item-label">Address</td>
-                    <td class="pool-item-value pool-link"><span onclick="window.open('https://solscan.io/account/${this.currentPool.address}')">${this.currentPool.address}</span></td>
-                </tr>
                 <tr>
                     <td class="pool-item-label">Bin Step</td>
                     <td class="pool-item-value">${this.currentPool.bin_step}</td>
@@ -216,26 +219,23 @@ class App {
                 </tr>
             </tbody>
         </table>
+        </div>
     `;
 
-        this.additionalInfoContainer.innerHTML = `
-        <table>
-            <thead>
-                <tr>
-                    <th>Property</th>
-                    <th>Value</th>
-                </tr>
-            </thead>
-            <tbody>
-                ${Object.entries(this.currentPool).map(([key, value]) => `
-                    <tr>
-                        <td>${key.replace(/_/g, ' ')}</td>
-                        <td>${value}</td>
-                    </tr>
-                `).join('')}
-            </tbody>
-        </table>
-    `;
+        // this.additionalInfoContainer.innerHTML = `
+        // <div class="pool-data-wrapper">
+        // <table>
+        //     <tbody>
+        //         ${Object.entries(this.currentPool).map(([key, value]) => `
+        //             <tr>
+        //                 <td class="pool-item-label">${key.replace(/_/g, ' ')}</td>
+        //                 <td class="pool-item-value">${value}</td>
+        //             </tr>
+        //         `).join('')}
+        //     </tbody>
+        // </table>
+        // </div>
+    // `;
         this.estimate();
     }
 

@@ -92,6 +92,7 @@ footer {
     font-size: 1.5em;
     font-weight: bold;
     padding: 10px;
+    margin: auto;
 }
 
 body {
@@ -124,19 +125,69 @@ body {
     display: flex;
 }
 
-.pool-item-label {
+.pool-data-title {
+    font-size: 1.5em;
     font-weight: bold;
-    text-align: right;
-    padding: 5px;
-    margin: 5px;
-    border-right: 1px solid darkgray;
+    padding: 10px;
+    text-align: center;
 }
 
-.pool-item-value {}
+.pool-data-wrapper {
+    padding: 10px;
+}
+
+.pool-data-wrapper > table {
+    margin: 5px auto;
+    padding: 5px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15)
+}
+
+.pool-item-label {
+    font-weight: bold;
+    text-align: left;
+    padding: 5px;
+    margin: 5px;
+}
+
+.pool-item-value {
+    text-align: right;
+}
 
 .pool-link {
     font-weight: bold;
     cursor: pointer;
+}
+
+.pool-links-container {
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.pool-link-icon {
+    margin: 5px;
+    border-radius: 5px;
+    padding: 5px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.pool-link-icon:hover {
+    scale: 1.02;
+}
+
+.meteora-icon {
+    background: #b20d0d;
+}
+.birdeye-icon {
+    background: #c0741b;
+}
+.jupiter-icon {
+    background: #67a940;
+}
+.solscan-icon {
+    background: #61d5d3;
 }
 
 .container {
@@ -158,6 +209,12 @@ body {
     font-size: 0.8em;
 }
 
+.constrained-label {
+    font-size: 0.8em;
+    max-width: 200px;
+    word-wrap: break-word;
+}
+
 #pool-health-container {
     margin-top: 20px;
     padding: 20px;
@@ -171,7 +228,7 @@ body {
 .input {
     width: 100%;
     max-width: 400px;
-    padding: 10px;
+    padding: 4px;
     margin: 10px 0;
     border: 1px solid var(--border-color);
     border-radius: 5px;
@@ -239,16 +296,16 @@ body {
     display: block;
 }
 
-.info-box {
-    max-height: 0;
-    width: 100%;
-    border-top: 1px solid var(--border-color);
-    padding-top: 20px;
-    margin: 20px 0;
-    overflow-y: auto;
-    transition: max-height 0.5s;
-}
+/*.info-box {*/
+/*    max-height: 0;*/
+/*    width: 100%;*/
+/*    border-top: 1px solid var(--border-color);*/
+/*    padding-top: 20px;*/
+/*    margin: 20px 0;*/
+/*    overflow-y: auto;*/
+/*    transition: max-height 0.5s;*/
+/*}*/
 
-.info-box.show {
-    max-height: 300px;
-}
+/*.info-box.show {*/
+/*    max-height: 300px;*/
+/*}*/
