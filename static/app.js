@@ -7,8 +7,6 @@ class App {
 
         this.searchInput = document.getElementById('searchInput');
         this.dropdownContent = document.getElementById('dropdown-content');
-        this.additionalInfoContainer = document.getElementById('additional-info-container');
-        this.toggleAdditionalInfoBtn = document.getElementById('toggle-additional-info');
         this.topProfitablePoolsContainer = document.getElementById('top-profitable-pools-container');
         this.userTVLInput = document.getElementById('user-tvl-input');
         this.minLiquidityInput = document.getElementById('min-liquidity-input');
@@ -46,11 +44,6 @@ class App {
                 this.dropdownContent.classList.remove('show');
             }
         });
-
-        // this.toggleAdditionalInfoBtn.addEventListener('click', () => {
-        //     this.additionalInfoContainer.classList.toggle('show');
-        //     this.toggleAdditionalInfoBtn.textContent = this.additionalInfoContainer.classList.contains('show') ? 'Hide Additional Information' : 'Show Additional Information';
-        // });
     }
 
     async getAllPools() {
@@ -153,6 +146,34 @@ class App {
         // this.analyzePoolHealth(this.currentPool).then(healthMetrics => this.displayPoolHealth(this.currentPool, healthMetrics));
     }
 
+    // displayResults() {
+    //     const query = this.searchInput.value.toLowerCase();
+    //     const minLiquidity = parseFloat(this.minLiquidityInput.value);
+    //     const minVolume = parseFloat(this.minVolumeInput.value);
+    //
+    //     this.dropdownContent.innerHTML = '';
+    //     if (query || document.activeElement === this.searchInput) {
+    //         const results = this.allPoolData
+    //             .filter(item => item.name.toLowerCase().includes(query) && item.liquidity >= minLiquidity && item.trade_volume_24h >= minVolume)
+    //             .sort((a, b) => parseFloat(b.liquidity) - parseFloat(a.liquidity));
+    //         results.forEach((item, iter) => {
+    //             const a = document.createElement('a');
+    //             a.href = '#';
+    //             a.textContent = `${iter+1}) ${item.name} (Liquidity: $${parseFloat(item.liquidity).toFixed(2)})`;
+    //             a.addEventListener('click', (e) => {
+    //                 e.preventDefault();
+    //                 this.searchInput.value = item.name;
+    //                 this.updatePoolData(item);
+    //                 this.dropdownContent.classList.remove('show');
+    //             });
+    //             this.dropdownContent.appendChild(a);
+    //         });
+    //         this.dropdownContent.classList.add('show');
+    //     } else {
+    //         this.dropdownContent.classList.remove('show');
+    //     }
+    // }
+
     displayResults() {
         const query = this.searchInput.value.toLowerCase();
         const minLiquidity = parseFloat(this.minLiquidityInput.value);
@@ -161,12 +182,17 @@ class App {
         this.dropdownContent.innerHTML = '';
         if (query || document.activeElement === this.searchInput) {
             const results = this.allPoolData
-                .filter(item => item.name.toLowerCase().includes(query) && item.liquidity >= minLiquidity && item.trade_volume_24h >= minVolume)
+                .filter(item =>
+                    (item.name.toLowerCase().includes(query) || item.address.toLowerCase().includes(query)) &&
+                    item.liquidity >= minLiquidity &&
+                    item.trade_volume_24h >= minVolume
+                )
                 .sort((a, b) => parseFloat(b.liquidity) - parseFloat(a.liquidity));
+
             results.forEach((item, iter) => {
                 const a = document.createElement('a');
                 a.href = '#';
-                a.textContent = `${iter+1}) ${item.name} (Liquidity: $${parseFloat(item.liquidity).toFixed(2)})`;
+                a.textContent = `${iter + 1}) ${item.name} (Liquidity: $${parseFloat(item.liquidity).toFixed(2)})`;
                 a.addEventListener('click', (e) => {
                     e.preventDefault();
                     this.searchInput.value = item.name;
