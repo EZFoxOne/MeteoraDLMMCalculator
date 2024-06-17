@@ -20,6 +20,11 @@ class App {
 
         this.allPoolData = null;
         this.currentPool = null;
+
+        // Bind methods to the class instance
+        this.copyTextToClipboard = this.copyTextToClipboard.bind(this);
+        this.displayResults = this.displayResults.bind(this);
+        this.updatePoolData = this.updatePoolData.bind(this);
     }
 
     async init() {
@@ -210,6 +215,7 @@ class App {
     displayPoolData() {
         this.poolDataContainer.innerHTML = `
         <div class="pool-data-title">${this.currentPool.name}</div>
+        <div class="pool-address" onclick="app.copyTextToClipboard('${this.currentPool.address}')">${this.currentPool.address}</div>
         <div id="pool-links-container" class="pool-links-container">
             <span class="pool-link-icon meteora-icon" onclick="window.open('https://app.meteora.ag/dlmm/${this.currentPool.address}')">Meteora</span>
             <span class="pool-link-icon birdeye-icon" onclick="window.open('https://birdeye.so/token/${this.currentPool.mint_x}/${this.currentPool.address}')">Birdeye</span>
@@ -391,7 +397,18 @@ class App {
         this.displayPoolData();
         // this.analyzePoolHealth(pool).then(healthMetrics => this.displayPoolHealth(pool, healthMetrics));
     }
+
+    copyTextToClipboard(text) {
+        navigator.clipboard.writeText(text).then(function() {
+            console.log("Copied text: ", text);
+            // this.notificationManager.showNotification('Text copied to clipboard');
+        }, function(err) {
+            console.error('Could not copy text: ', err);
+        });
+    }
 }
+
+
 
 const app = new App();
 app.init();
