@@ -177,6 +177,13 @@ body {
     scale: 1.02;
 }
 
+.pool-address {
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 5px;
+    text-align: center;
+}
+
 .meteora-icon {
     background: #b20d0d;
 }
