@@ -303,6 +303,18 @@ body {
     display: block;
 }
 
+.refresh-button {
+    width: 75px;
+    float: right;
+    text-align: center;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: var(--primary-color);
+    color: #fff;
+    cursor: pointer;
+}
+
 /*.info-box {*/
 /*    max-height: 0;*/
 /*    width: 100%;*/

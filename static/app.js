@@ -40,6 +40,14 @@ class App {
         await this.setListeners();
     }
 
+    async refreshPools() {
+        const refreshStatus = document.getElementById('refresh-status');
+        refreshStatus.innerText = 'Refreshing pools...';
+        await this.getAllPools();
+        await this.calculateTopProfitablePools();
+        refreshStatus.innerText = 'Pools refreshed!';
+    }
+
     async setListeners() {
         this.searchInput.addEventListener('focus', () => this.displayResults());
         this.searchInput.addEventListener('input', () => this.displayResults());
@@ -62,6 +70,7 @@ class App {
     }
 
     calculateTopProfitablePools() {
+        console.log("calculating top profitable pools")
         const userTVL = parseFloat(this.userTVLInput.value);
         const minLiquidity = parseFloat(this.minLiquidityInput.value);
         const minVolume = parseFloat(this.minVolumeInput.value);
