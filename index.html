@@ -41,7 +41,7 @@
             </label>
             <label class="small-label constrained-label">
                 <input onclick="app.estimate()" type="checkbox" id="tvl-is-added" class="checkbox"
-                       title="Check this box if your TVL is not in the pool yet">Check this box if your TVL is not in the pool yet
+                       title="Check this box if your TVL is not in the pool yet" checked>Check this box if your TVL is not in the pool yet
             </label>
             <div class="estimated-container">Your % of the Pool: <span id="percent-of-pool"></span></div>
             <div class="estimated-container">Estimated Daily Return: <span id="daily-return"></span></div>
@@ -49,6 +49,9 @@
         </div>
     </div>
     <div class="container">
+        <div class="refresh-container">
+        <span class="refresh-button" onclick="app.refreshPools()">Refresh</span><span class="refresh-status" id="refresh-status"></span>
+        </div>
         <div id="top-profitable-pools-container">Pools are loading... please wait...
         </div>
     </div>
