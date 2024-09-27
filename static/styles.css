@@ -175,9 +175,9 @@ body {
 
 .container {
     margin: 10px;
-    overflow-y: auto;
+    overflow: auto;
     width: 90%;
-    max-width: 800px;
+    /*max-width: 800px;*/
     max-height: 1200px;
     padding: 20px;
     border: 1px solid var(--border-color);
@@ -358,6 +358,11 @@ body {
     .container {
         flex-direction: column; /* Stack containers vertically */
         /*width: 100%; !* Make containers take the full width *!*/
+    }
+
+    .styled-table {
+        font-size: 0.6em;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     }
 
     .user-data,
