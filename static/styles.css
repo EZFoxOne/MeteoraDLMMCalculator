@@ -357,7 +357,7 @@ body {
 @media (max-width: 768px) {
     .container {
         flex-direction: column; /* Stack containers vertically */
-        width: 100%; /* Make containers take the full width */
+        /*width: 100%; !* Make containers take the full width *!*/
     }
 
     .user-data,
