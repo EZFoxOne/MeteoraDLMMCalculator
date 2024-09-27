@@ -1,6 +1,6 @@
 class NotificationManager {
-    constructor(eBook) {
-        this.eBook = eBook;
+    constructor(app) {
+        this.app = app;
         this.notifications = [];
         this.handleNotifications = this.handleNotifications.bind(this);
         this.intervalId = null; // To store the interval ID for later cleanup

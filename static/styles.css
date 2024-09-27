@@ -11,30 +11,6 @@
     --font-family: 'Arial', sans-serif;
 }
 
-footer {
-    padding: 10px;
-    background-color: var(--primary-color);
-    color: #fff;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
-
-.footer-link {
-    padding: 5px;
-    border-radius: 5px;
-    background-color: #fff;
-    color: var(--primary-color);
-    margin: 5px;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.footer-link:hover {
-    background-color: var(--primary-color-hover);
-    color: #fff;
-}
-
 .nav-links {
     display: flex;
     margin: 10px;
@@ -314,6 +290,90 @@ body {
     color: #fff;
     cursor: pointer;
 }
+
+/* Notification container */
+#notification-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+/* Notification wrapper */
+.notification-wrapper {
+    position: relative;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    padding: 15px;
+    width: 300px; /* Set a fixed width */
+    overflow: hidden;
+    transition: right 0.5s ease-in-out; /* Slide animation */
+}
+
+/* Notification types */
+.notification-error {
+    border-color: #e74c3c;
+}
+
+.notification-warning {
+    border-color: #f39c12;
+}
+
+.notification-info {
+    border-color: #3498db;
+}
+
+.notification-success {
+    border-color: #2ecc71;
+}
+
+/* Notification title */
+.notification-wrapper h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #333;
+}
+
+/* Notification message */
+.notification-wrapper p {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #9d9d9d;
+}
+
+/* Notification footer */
+.notification-wrapper footer {
+    position: absolute;
+    bottom: 5px;
+    left: 15px;
+    font-size: 10px;
+    color: #999;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Stack containers vertically */
+        width: 100%; /* Make containers take the full width */
+    }
+
+    .user-data,
+    .display-container,
+    .pool-data-wrapper {
+        flex-direction: column;
+        width: 100%;
+        max-width: 100%; /* Ensure it takes full available width */
+    }
+
+    .pool-link-icon {
+        display: block; /* Stack icons vertically */
+        margin: 10px 0;
+    }
+}
+
 
 /*.info-box {*/
 /*    max-height: 0;*/

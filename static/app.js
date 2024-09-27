@@ -38,14 +38,16 @@ class App {
         await this.getAllPools();
         await this.calculateTopProfitablePools();
         await this.setListeners();
+        this.notificationManager.startProcessing();
     }
 
     async refreshPools() {
         const refreshStatus = document.getElementById('refresh-status');
-        refreshStatus.innerText = 'Refreshing pools...';
+        // refreshStatus.innerText = 'Refreshing pools...';
         await this.getAllPools();
         await this.calculateTopProfitablePools();
-        refreshStatus.innerText = 'Pools refreshed!';
+        // refreshStatus.innerText = 'Pools refreshed!';
+        await this.notificationManager.addNotification('Success', 'Pools refreshed!', 'success', 3000);
     }
 
     async setListeners() {

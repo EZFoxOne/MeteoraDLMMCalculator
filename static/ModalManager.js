@@ -1,11 +1,11 @@
 class ModalManager {
-    constructor(eBook) {
-        this.eBook = eBook;
+    constructor(app) {
+        this.app = app;
         this.modals = [];
     }
 
     createModal(title, content, options = {}, modalType = Modal) {
-        const modal = new modalType(this.eBook, title, content, options);
+        const modal = new modalType(this.app, title, content, options);
         this.modals.push(modal);
         return modal;
     }
@@ -14,7 +14,7 @@ class ModalManager {
         this.closeAllModals();
         const modal = this.createModal(title, content, options, modalType);
         modal.open(overlay);
-        // this.eBook.NotificationManager.addNotification(`Opened modal: ${title}`);
+        // this.app.NotificationManager.addNotification(`Opened modal: ${title}`);
     }
 
     closeAllModals() {
@@ -34,8 +34,8 @@ class ModalManager {
 }
 
 class Modal {
-    constructor(eBook, title, content, options = {}) {
-        this.eBook = eBook;
+    constructor(app, title, content, options = {}) {
+        this.app = app;
         this.title = title;
         this.content = content;
         this.options = options;
@@ -101,21 +101,21 @@ class Modal {
 }
 
 class SettingsModal extends Modal {
-    constructor(eBook, title, content, options = {}) {
-        super(eBook, title, content, options);
+    constructor(app, title, content, options = {}) {
+        super(app, title, content, options);
         this.generateModalContent();
     }
 
     generateModalContent() {
         const generalSettings = document.createElement('div');
-        generalSettings.appendChild(new ThemeSettingsPanel(this.eBook).element);
+        generalSettings.appendChild(new ThemeSettingsPanel(this.app).element);
         this.element.appendChild(generalSettings);
     }
 }
 
 class ThemeSettingsPanel {
-    constructor(eBook) {
-        this.eBook = eBook;
+    constructor(app) {
+        this.app = app;
         this.element = this.createThemeSettingsPanel();
     }
 
@@ -149,7 +149,7 @@ class ThemeSettingsPanel {
                 theme = checkbox.dataset.theme
             }
             console.log("Updating theme to:", theme)
-            this.eBook.StateManager.updateState({userSettings: {theme: theme}})
+            this.app.StateManager.updateState({userSettings: {theme: theme}})
         });
 
         const checkmark = document.createElement('span');
@@ -200,8 +200,8 @@ class HelpModal extends Modal {
 }
 
 class TableOfContentsEditModal extends Modal {
-    constructor(eBook, title, content, options = {}) {
-        super(eBook, title, content, options);
+    constructor(app, title, content, options = {}) {
+        super(app, title, content, options);
         this.element.appendChild(this.generateModalContent());
     }
 
@@ -217,7 +217,7 @@ class TableOfContentsEditModal extends Modal {
             const itemNameInput = editForm.querySelector('#tocItemName');
             const newItemName = itemNameInput.value.trim();
             if (newItemName !== '') {
-                // Assuming you have a method to handle TOC item editing in your eBook class
+                // Assuming you have a method to handle TOC item editing in your app class
                 console.log('edit toc item')
                 this.close(); // Close the modal after editing
             } else {
